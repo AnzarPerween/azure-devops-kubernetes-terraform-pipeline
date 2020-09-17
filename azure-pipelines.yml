@@ -9,14 +9,6 @@ stages:
   jobs:
   - job: firstJob
     steps:
-    # - bash: echo $(PipelineLevelVariable)
-    # - bash: echo $(Build.BuildNumber)
-    # - bash: echo $(Build.SourceBranchName)
-    # - bash: echo $(Build.SourcesDirectory)
-    # - bash: echo $(System.DefaultWorkingDirectory)
-    # - bash: dir $(System.DefaultWorkingDirectory)
-    #  - bash: echo $(Build.ArtifactStagingDirectory)
-    # - bash: dir $(Build.ArtifactStagingDirectory)
     - task: CopyFiles@2
       inputs:
         SourceFolder: '$(System.DefaultWorkingDirectory)'
@@ -24,44 +16,8 @@ stages:
           **/*.yml
           **/*.tf
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    # - bash: dir $(Build.ArtifactStagingDirectory)
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'drop'
         publishLocation: 'Container'
-# - stage: DevDeploy
-
-#   jobs:
-
-#   - deployment: DevDeployJob
-
-#     environment: Dev
-
-#     strategy:
-
-#      runOnce:
-
-#       deploy:
-
-#        steps:
-
-#        - script: echo deploy to Dev
-
-# - stage: QADeploy
-
-#   jobs:
-
-#     - deployment: QADeployJob
-
-#       environment: QA
-
-#       strategy:
-
-#        runOnce:
-
-#         deploy:
-
-#          steps:
-
-#          - script: echo deploy to QA
