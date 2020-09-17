@@ -9,13 +9,13 @@ stages:
   jobs:
   - job: firstJob
     steps:
-    - bash: echo $(PipelineLevelVariable)
-    - bash: echo $(Build.BuildNumber)
-    - bash: echo $(Build.SourceBranchName)
-    - bash: echo $(Build.SourcesDirectory)
-    - bash: echo $(System.DefaultWorkingDirectory)
+    # - bash: echo $(PipelineLevelVariable)
+    # - bash: echo $(Build.BuildNumber)
+    # - bash: echo $(Build.SourceBranchName)
+    # - bash: echo $(Build.SourcesDirectory)
+    # - bash: echo $(System.DefaultWorkingDirectory)
     - bash: dir $(System.DefaultWorkingDirectory)
-    - bash: echo $(Build.ArtifactStagingDirectory)
+    # - bash: echo $(Build.ArtifactStagingDirectory)
     - bash: dir $(Build.ArtifactStagingDirectory)
     - task: CopyFiles@2
       inputs:
