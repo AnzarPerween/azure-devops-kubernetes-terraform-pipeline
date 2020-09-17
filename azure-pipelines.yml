@@ -24,7 +24,7 @@ stages:
           **/*.yml
           **/*.tf
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    - bash: dir $(Build.ArtifactStagingDirectory)
+    # - bash: dir $(Build.ArtifactStagingDirectory)
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
